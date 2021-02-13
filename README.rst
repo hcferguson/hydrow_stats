@@ -17,4 +17,7 @@ Output of the comma-separated version::
 
     2020-12-26T15:28:41.421Z, HarryF, 1228.25, 300.000, 122.2, 26, 199, 82, 104, Aquil Abdullah, Assessment Row
 
+The stats in order are::
+
+    date and time, Screen name, meters, duration, split (seconds), strokes/minute, watts, calories, resistance, instructor, workout name
 
