@@ -19,10 +19,9 @@ Both have generous free tiers.
 Create a table to receive the data on Google Sheets
 ---------------------------------------------------
 Create a table on Google Sheets to receive the data. 
-The custom field types for the different columns are as follows:
 
-An example is shown below. Yours will start out empty (delete any rows that Airtable sets
-up for you in the template that it provides).
+An example is shown below. Yours will start out empty. 
+Name the columns something sensible like what is shown here.
 
 .. image:: google_sheet.png
    :scale: 40
