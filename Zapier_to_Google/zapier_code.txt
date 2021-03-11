@@ -1,0 +1,35 @@
+.. code-block:: python
+
+    # Cut and paste this into the "Run Python" Code section.
+    # Set "Input Data" to "body"
+    # Set the source of the input data to "Email Body Plain"
+    import requests                                                                                                                                   
+    import re
+    import json
+    
+    output = {}
+    url = input_data['body'].split()[0]
+    response = requests.get(url)
+    pattern = re.compile('{"dataManager":.*}}}')
+    result = pattern.findall(response.text)
+    data = json.loads(result[0])
+    output['workout'] = data['props']['pageProps']['workout']['workoutVideo']['name']
+    output['instructor'] = data['props']['pageProps']['workout']['workoutVideo']['instructorName']
+    output['category'] = data['props']['pageProps']['workout']['workoutVideo']['categoryName']
+    output['rower'] = data['props']['pageProps']['workout']['rower']['screenName']
+    output['date'] = data['props']['pageProps']['workout']['startTime']
+    stats = data['props']['pageProps']['workout']['workoutStats'] 
+    output['calories'] = stats['calories']
+    output['hydrowResistance'] = stats['hydrowResistance']
+    output['meters'] = stats['meters']
+    output['spm'] = stats['strokesPerMinute']
+    output['watts'] = stats['watts']
+    # Convert elapsed time to minutes
+    output['elapsedTime'] = f"{float(stats['elapsedTime'])/60.}"
+    # Convert the split to minutes:seconds (a string)
+    split = float(stats['splitTime'])/60.
+    split_minutes = int(split)
+    split_seconds = 60.*(split-split_minutes)
+    output['split'] = f"{split_minutes}:{split_seconds:04.1f}"
+    
+    return output
